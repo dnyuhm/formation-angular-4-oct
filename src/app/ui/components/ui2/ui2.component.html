@@ -4,10 +4,10 @@
       <ng-container *ngIf="open, then thenBlock, else elseBlock"></ng-container>
     </span>
     <ng-template #thenBlock>
-      <ng-content select=".tr-icon-open"></ng-content>
+      <ng-content select=".tr-icon-close"></ng-content>
     </ng-template>
     <ng-template #elseBlock>
-      <ng-content select=".tr-icon-close"></ng-content>
+      <ng-content select=".tr-icon-open"></ng-content>
     </ng-template>
     <ng-content select=".tr-header"></ng-content>
   </header>
