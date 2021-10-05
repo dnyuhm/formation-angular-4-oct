@@ -1,11 +1,8 @@
 <header class="fixed-top">
   <span (click)="toggle()">
-    <ng-content *ngIf="open; else elseBlock" select=".tr-icon-open"></ng-content>
-
-    <ng-template #elseBlock>
-      <ng-content select=".tr-icon-close"></ng-content>
-    </ng-template>
+    <ng-container *ngIf="open; then thenBlock else elseBlock"></ng-container>
   </span>
+
   <ng-content select=".tr-header"></ng-content>
 </header>
 <main [ngClass]="{'close-aside': open}">
@@ -25,3 +22,12 @@
     </footer>
   </div>
 </main>
+
+
+<ng-template #thenBlock>
+  <ng-content select=".tr-icon-open"></ng-content>
+</ng-template>
+
+<ng-template #elseBlock>
+  <ng-content select=".tr-icon-close"></ng-content>
+</ng-template>
