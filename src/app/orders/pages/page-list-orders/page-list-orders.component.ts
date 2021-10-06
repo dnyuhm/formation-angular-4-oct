@@ -8,8 +8,7 @@ import { OrdersService } from '../../services/orders.service';
 })
 export class PageListOrdersComponent implements OnInit {
   constructor(private ordersService: OrdersService) {
-    console.log('test');
-    this.ordersService.collection$.subscribe((data) => console.log(data));
+    this.ordersService.collection$.subscribe();
   }
 
   ngOnInit(): void {}
