@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-template-full-width',
@@ -6,9 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template-full-width.component.scss'],
 })
 export class TemplateFullWidthComponent implements OnInit {
-  public title: string;
+  @Input() public title!: string;
   constructor() {
     this.title = 'Le titre est ici';
+    // console.log(this.title);
   }
-  ngOnInit(): void {}
+  ngOnChanges() {
+    // console.log(this.title);
+  }
+  ngOnInit(): void {
+    // console.log(this.title);
+  }
 }

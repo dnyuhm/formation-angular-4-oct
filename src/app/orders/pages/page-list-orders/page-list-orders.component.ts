@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplateContainerComponent } from 'src/app/templates/components/template-container/template-container.component';
 import { OrdersService } from '../../services/orders.service';
 
 @Component({
@@ -8,9 +7,14 @@ import { OrdersService } from '../../services/orders.service';
   styleUrls: ['./page-list-orders.component.scss'],
 })
 export class PageListOrdersComponent implements OnInit {
+  public myTitle: string = 'list orders';
   constructor(private ordersService: OrdersService) {
     this.ordersService.collection$.subscribe();
   }
 
   ngOnInit(): void {}
+
+  public changeTitle() {
+    this.myTitle = 'My list of orders';
+  }
 }
