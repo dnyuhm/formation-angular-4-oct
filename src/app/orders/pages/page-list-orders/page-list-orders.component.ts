@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
 
@@ -11,6 +12,7 @@ import { OrdersService } from '../../services/orders.service';
 export class PageListOrdersComponent implements OnInit {
   public myTitle: string = 'list orders';
   public collection$!: Observable<Order[]>;
+  public states = Object.values(StateOrder);
   public headers = [
     'Type',
     'Client',
@@ -22,9 +24,16 @@ export class PageListOrdersComponent implements OnInit {
   ];
   constructor(private ordersService: OrdersService) {
     this.collection$ = this.ordersService.collection$;
+    console.log(this.states);
   }
 
   ngOnInit(): void {}
+
+  public changeState(item: Order, event: any): void {
+    const state = event.target.value;
+    console.log(event.target.value);
+    this.ordersService.changeState(item, state).subscribe((data) => item = data);
+  }
 
   public changeTitle() {
     this.myTitle = 'My list of orders';
